@@ -1,11 +1,22 @@
+html {
+}
+
 body {
   font-family: 'Press Start 2P', monospace;
   font-size: 16px;
   line-height: 1.4;
   -webkit-font-smoothing: none;
 
+  background: rgb(24, 24, 24) url("../images/background-780.png") repeat-y fixed top center;
+
+}
+
+.content {
   color: white;
-  background-color: rgb(24, 24, 24);
+  background: black;
+  width: 540px;
+  margin: 0 auto;
+  padding: 1em;
 }
 
 a {
@@ -21,4 +32,36 @@ a:active {
 
 .name {
   white-space: nowrap;
+}
+
+h1 {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: url("../images/logo-640.png") 0 0 no-repeat;
+  width: 640px;
+  height: 229px;
+  margin: 0 auto;
+}
+
+.game, .links, .credits, .thanks, .license {
+  margin-bottom: 64px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.game {
+  width: 512px;
+  height: 544px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(64, 64, 64);
+}
+.game p {
+  padding-top: 256px;
+  text-align: center;
 }
