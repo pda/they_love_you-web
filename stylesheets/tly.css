@@ -1,11 +1,11 @@
-html {
-}
 
 body {
+  margin: 0;
+
   font-family: 'Press Start 2P', monospace;
   font-size: 16px;
   line-height: 1.4;
-  -webkit-font-smoothing: none;
+  text-align: center;
 
   background: rgb(24, 24, 24) url("../images/background-780.png") repeat-y fixed top center;
 
@@ -14,20 +14,25 @@ body {
 .content {
   color: white;
   background: black;
+  -webkit-font-smoothing: none; /* webkit only */
+  text-shadow: rgb(255, 180, 180) 0 0 4px; /* CRT-style glow */
+
   width: 540px;
-  padding: 1em;
   margin: -48px auto 0 auto;
+  padding: 16px;
 }
 
 a {
+  text-decoration: none;
+  padding: 4px 0; /* larger click target */
+}
+a:hover {
+  text-decoration: underline;
+}
+
+a, a:visited, a:active {
   color: rgb(180, 180, 255);
   white-space: nowrap;
-}
-a:visited {
-  color: rgb(180, 180, 255);
-}
-a:active {
-  color: rgb(180, 180, 255);
 }
 
 .name {
@@ -36,24 +41,41 @@ a:active {
 
 h1 {
   z-index: 10;
+
+  background: url("../images/logo-640.png") 0 0 no-repeat;
   position: relative;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-  background: url("../images/logo-640.png") 0 0 no-repeat;
+
   width: 640px;
   height: 229px;
   margin: 0 auto;
+  padding: 0;
 }
 
-.game, .links, .credits, .thanks, .license {
+.game, .links, .credits, .thanks {
   margin-bottom: 64px;
 }
 
+.license {
+  text-shadow: none;
+  font-size: 8px;
+  color: rgb(128, 128, 128);
+}
+
+.license a, .license a:visited, .license a:active {
+  color: rgb(128, 128, 128);
+}
+
+
 ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+}
+
+ul li {
+  padding-bottom: 2px;
 }
 
 .game {
