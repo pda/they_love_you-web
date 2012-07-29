@@ -15,8 +15,8 @@ body {
   color: white;
   background: black;
   width: 540px;
-  margin: 0 auto;
   padding: 1em;
+  margin: -48px auto 0 auto;
 }
 
 a {
@@ -35,6 +35,8 @@ a:active {
 }
 
 h1 {
+  z-index: 10;
+  position: relative;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
