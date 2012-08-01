@@ -12,7 +12,13 @@
     <div class="content">
 
       <div class="game">
-        <p>Coming soon...</p>
+        <div id="unityPlayer">
+          <div class="missing">
+            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+              <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+            </a>
+          </div>
+        </div>
       </div><!-- .game -->
 
       <div class="links">
@@ -69,6 +75,20 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+    </script>
+
+    <!-- Unity web player -->
+    <script type="text/javascript" src="http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject.js"></script>
+    <script type="text/javascript">
+    function GetUnity() {
+      if (typeof unityObject != "undefined") {
+        return unityObject.getObjectById("unityPlayer");
+      }
+      return null;
+    }
+    if (typeof unityObject != "undefined") {
+      unityObject.embedUnity("unityPlayer", "content/they_love_you-web-1.0.1.unity3d", 512, 544);
+    }
     </script>
 
   </body>
