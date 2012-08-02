@@ -39,6 +39,10 @@ a, a:visited, a:active {
   white-space: nowrap;
 }
 
+.separator {
+  color: rgb(128, 128, 128);
+}
+
 h1 {
   z-index: 10;
 
