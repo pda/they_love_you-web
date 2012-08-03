@@ -11,6 +11,9 @@
 
     <div class="content">
 
+      <div class="warnings">
+      </div>
+
       <div class="game">
         <div id="unityPlayer">
           <div class="missing">
@@ -77,6 +80,25 @@
       </div><!-- .license -->
 
     </div><!-- .content -->
+
+    <!-- Safari 6 warning -->
+    <script type="text/javascript">
+      (function() {
+        if (window.navigator && (navigator.userAgent || "").match(/Version\/6\.0 Safari/)) {
+          var lines = [
+            "Oh no!",
+            "Safari 6 on Mountain Lion with Unity Web Player has broken keyboard input controls.",
+            "Download the game for Mac or Windows, or try a different browser for now.",
+            "Sorry for the inconvenience, fellow early adopters!"
+          ]
+          var warning = document.getElementsByClassName("warnings")[0].appendChild(document.createElement("p"));
+          lines.forEach(function (line, i) {
+            if (i) warning.appendChild(document.createElement("br"));
+            warning.appendChild(document.createTextNode(line));
+          })
+        }
+      })();
+    </script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">
