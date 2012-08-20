@@ -58,26 +58,11 @@ h1 {
   padding: 0;
 }
 
-h3 {
-  z-index: 10;
-
-  background: url("../images/controls.png") 0 0 no-repeat;
-  position: relative;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-
-  width: 512px;
-  height: 100px;
-  margin: 0 auto;
-  padding: 0;
-}
-
 .warnings p {
   color: rgb(255, 96, 96);
 }
 
-.game, .links, .credits, .thanks {
+.controls, .links, .credits, .thanks {
   margin-bottom: 64px;
 }
 
