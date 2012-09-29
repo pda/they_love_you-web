@@ -1,0 +1,66 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+.noselect {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#map {
+  border: 1px solid black;
+  height: 511px;
+  width: 512px;
+  overflow: hidden;
+}
+
+#map > div {
+  height: 32px;
+  width: 32px;
+  outline: 1px solid rgba(128, 128, 128, 0.3);
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#palette {
+  margin-top: 10px;
+}
+
+#palette input {
+  display: none;
+}
+
+#palette > label {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #aaa;
+  margin-right: 8px;
+
+  text-align: center;
+  line-height: 64px;
+  font-size: 80%;
+  color: white;
+  text-shadow: 0 0 4px black;
+}
+
+#palette input:checked + label {
+  outline: 4px solid #88f;
+}
+
+#controls {
+  margin: 1em 0;
+}
+
+#export {
+  width: 512px;
+  overflow: hidden;
+}
+
+#export img {
+  width: 64px;
+  height: 64px;
+}
