@@ -12,7 +12,7 @@ class LevelBuilder
       container = document.getElementById("export")
       for node, i in container.childNodes
         container.removeChild(node) if i >= (8 - 1)
-      container.insertBefore(@map.toImage(), container.firstChild)
+      container.insertBefore(@map.toImageLink(), container.firstChild)
 
 
 class Map
@@ -75,6 +75,14 @@ class Map
       context.fillStyle = Palette.color(tile.dataset.type)
       context.fillRect(x, y, x, y)
     canvas
+
+  toImageLink: ->
+    img = @toImage()
+    a = @document.createElement("a")
+    a.href = img.src
+    a.target = "_blank"
+    a.appendChild(img)
+    a
 
   toImage: ->
     img = @document.createElement("img")
