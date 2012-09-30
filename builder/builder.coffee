@@ -3,6 +3,7 @@ class LevelBuilder
   constructor: (@document) ->
     @palette = new Palette(document, "palette")
     @map = new Map(document, "map", @palette)
+    @metadata = new MetadataGenerator(document, "metadata")
 
     link = document.getElementById("controls").appendChild(document.createElement("a"))
     link.appendChild(document.createTextNode("Export"))
@@ -136,6 +137,77 @@ class Palette
     label.appendChild(@document.createTextNode(type))
     label.style.backgroundColor = color
     input.addEventListener "click", (event) => @chooseSwatch(event.target)
+
+
+class MetadataGenerator
+
+  FIELDS = [
+    "levelName"
+    "authorName"
+    "playerSize"
+    "playerSpeed"
+    "monsterSize"
+    "monsterSpeed"
+    "monsterStunTime"
+    "bombCount"
+    "nextLevelDelay"
+  ]
+
+  constructor: (@document, id) ->
+    @container = document.getElementById(id)
+    @fields = @buildFields()
+    @output = @container.querySelector("pre")
+    @links = @container.querySelector(".links")
+
+  buildFields: ->
+    fields = {}
+    container = @container.querySelector(".form")
+    container.className = "fields"
+    for field in FIELDS
+      fields[field] = @buildField(field, container)
+    fields
+
+  buildField: (field, container) ->
+    row = container.appendChild(@document.createElement("div"))
+    label = row.appendChild(@document.createElement("label"))
+    input = row.appendChild(@document.createElement("input"))
+    input.id = "meta_#{field}"
+    label.setAttribute("for", input.id)
+    label.appendChild(@document.createTextNode(@camelToHuman(field)))
+    for event in ["keyup", "change", "input"]
+      input.addEventListener event, @handleInput
+    input
+
+  handleInput: (event) =>
+    json = JSON.stringify(@toObject(), null, " ")
+    @output.innerText = json
+    @links.innerHTML = ""
+    link = @links.appendChild(@document.createElement("a"))
+    link.href = @stringToDataUrl(json)
+    link.target = "_blank"
+    link.appendChild(@document.createTextNode("Download"))
+
+  toObject: ->
+    object = {}
+    for field in FIELDS
+      object[field] = @readValue(field)
+    object
+
+  readValue: (field) ->
+    text = @fields[field].value
+    if text == ""
+      null
+    else if text.match(/^-?\d+$/)
+      parseInt(text)
+    else
+      text
+
+  camelToHuman: (string) ->
+    string.charAt(0).toUpperCase() +
+      string.slice(1).replace /([A-Z])/g, (_, $1) -> " " + $1
+
+  stringToDataUrl: (string) ->
+    "data:text/plain;base64," + btoa(string)
 
 
 @levelBuilder = new LevelBuilder(document)
