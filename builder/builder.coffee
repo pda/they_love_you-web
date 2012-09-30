@@ -109,6 +109,7 @@ class Palette
     @color = null
     @default = "floor"
     @build()
+    @bindKeyboard()
 
   chooseSwatch: (swatch) ->
     swatch = @resolve(swatch)
@@ -134,10 +135,18 @@ class Palette
     input.value = type
     input.id = "swatch_#{type}"
     label.setAttribute("for", input.id)
-    label.appendChild(@document.createTextNode(type))
+    firstLetter = label.appendChild(@document.createElement("span"))
+    firstLetter.appendChild(@document.createTextNode(type.charAt(0)))
+    label.appendChild(@document.createTextNode(type.slice(1)))
     label.style.backgroundColor = color
     input.addEventListener "click", (event) => @chooseSwatch(event.target)
 
+  bindKeyboard: ->
+    @document.body.addEventListener "keypress", (event) =>
+      return if @document.querySelector("input:focus")
+      map = {m: "monster", p: "player", g: "goal", w: "wall", f: "floor"}
+      key = String.fromCharCode(event.charCode)
+      @chooseSwatch(map[key]) if map[key]
 
 class MetadataGenerator
 

@@ -47,6 +47,10 @@ body {
   text-shadow: 0 0 4px black;
 }
 
+#palette > label > span {
+  text-decoration: underline;
+}
+
 #palette input:checked + label {
   outline: 4px solid #88f;
 }
